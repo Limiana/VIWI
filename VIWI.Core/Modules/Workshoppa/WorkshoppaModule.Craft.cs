@@ -550,7 +550,8 @@ internal sealed partial class WorkshoppaModule
     }
     private unsafe void CloseMaterialDelivery()
     {
-        if (AddonHelpers.TryGetAddonByName<AtkUnitBase>(GameGui, "SubmarinePartsMenu", out var addonMaterialDelivery))
+        if (AddonHelpers.TryGetAddonByName<AtkUnitBase>(GameGui, "SubmarinePartsMenu", out var addonMaterialDelivery) &&
+            AddonState.IsAddonReady(addonMaterialDelivery))
         {
             PluginLog.Debug("Closing MaterialDelivery addon");
             var values = stackalloc AtkValue[]
